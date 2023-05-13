@@ -475,6 +475,7 @@ nav .fa-solid
     #header
     {
         background-image: url(Images/pisica2.jpg);
+        background-size: 70%;
     }
 
     .header-text
