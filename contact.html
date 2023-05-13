@@ -1,0 +1,161 @@
+   <!-------------CONTACT----------->
+   <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contact</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://kit.fontawesome.com/cb11976c38.js" crossorigin="anonymous"></script>
+    </head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KYCRD9TVCY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KYCRD9TVCY');
+</script>
+
+    <body>
+        <div id="theme-btn" class="far fa-moon"></div>
+        <div id="header3">
+            <div class="container">
+                <nav>
+                    <img src="images/logo-no-background (2).png" class="logo">
+                    <ul id="sidemenu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="portofolio.html">Portofolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <i class="fa-solid fa-circle-xmark" style="color: #ffffff;" onclick="closemenu()"></i>
+                    </ul>
+                    <i class="fa-solid fa-bars" style="color: #ffffff;" onclick="openmenu()"></i>
+                </nav>
+            </div>
+                </div>
+
+   <div id="contact"> 
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact me</h1>
+                <p><i class="fa-solid fa-paper-plane" style="color: #21a0a0;"></i>ionela.nistor@student.upt.ro</p>
+                <p><i class="fa-solid fa-phone" style="color: #21a0a0;"></i> 0000000000000</p>
+
+                <div class="social-icons">
+                <a href="https://www.instagram.com/cristina__nistor/"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=100009073287963"><i class="fa-brands fa-facebook"></i></a>
+            </div>
+            <a href="Images/cv.jpg"  download class="btn btn2">Download CV</a>
+            </div>
+            <div class="contact-right">
+            <form name="submit-to-google-sheet">
+                <span id="msg"></span>
+                <input type="text" name="FirstName" placeholder="Your First Name" required pattern="[A-Z][a-z]*">
+               <div class="error-message" id="name-error">Please enter a name starting with an uppercase letter.</div>
+                <input type="text" name="LastName" placeholder="Your Last Name" required pattern="[A-Z][a-z]*">
+                <div class="error-message" id="name-error">Please enter a name starting with an uppercase letter.</div>
+                <input type="email" name="Email" placeholder="Your Email" required>
+                <textarea name="Message" rows="6" placeholder="Your Message..."></textarea>
+                <button type="submit" class="btn btn2">Submit</button>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
+<div class="copyright">
+    <p>Copyright © Nistor Cristina. Made with <i class="fa-solid fa-heart" style="color: #ffff00;"></i> by Easy Tutorials</p>
+</div>
+
+<script>
+    var sidemen = document.getElementById("sidemenu");
+
+    function openmenu()
+    {
+        sidemen.style.right = "0";
+    }
+
+    function closemenu()
+    {
+        sidemen.style.right = "-200px";
+    }
+</script>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzamzc-Ct2jOiv6K36u-XsoG71eawmUjhMEhC6Kxap7q-xTdDTBdgVUHDtca8H4e8y6Gg/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => { msg.innerHTML = "Message sent successfully!"
+    setTimeout(function(){
+        msg.innerHTML = ""
+    },5000)
+        form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+
+<script>
+    const themeBtn = document.getElementById("theme-btn");
+    themeBtn.onclick = () => {
+      themeBtn.classList.toggle("fa-sun");
+      if (themeBtn.classList.contains("fa-sun")) {
+        document.body.classList.add("changeTheme");
+      } else {
+        document.body.classList.remove("changeTheme");
+      }
+    }
+</script>
+
+<script>
+    const themeBtn = document.getElementById("theme-btn");
+    
+    // Function to set the theme preference
+    function setThemePreference(isLightMode) {
+      if (isLightMode) {
+        document.body.classList.add("changeTheme");
+        themeBtn.classList.add("fa-sun");
+      } else {
+        document.body.classList.remove("changeTheme");
+        themeBtn.classList.remove("fa-sun");
+      }
+    }
+    
+    // Function to toggle the theme
+    function toggleTheme() {
+      const isLightMode = !document.body.classList.contains("changeTheme");
+      setThemePreference(isLightMode);
+      setThemePreferenceCookie(isLightMode);
+    }
+    
+    // Function to check the theme preference from cookie
+    function getThemePreference() {
+      const themeCookie = document.cookie.match('(^|;) ?themePreference=([^;]*)(;|$)');
+      return themeCookie ? themeCookie[2] === 'lightMode' : false;
+    }
+    
+    // Function to set the theme preference cookie
+    function setThemePreferenceCookie(isLightMode) {
+      const expirationDate = new Date();
+      expirationDate.setFullYear(expirationDate.getFullYear() + 1);
+      document.cookie = `themePreference=${isLightMode ? 'lightMode' : 'darkMode'}; expires=${expirationDate.toUTCString()}`;
+    }
+    
+    // Check the theme preference and set it accordingly
+    const themePreference = getThemePreference();
+    setThemePreference(themePreference);
+    
+    // Add event listener to the theme toggle button
+    themeBtn.addEventListener("click", toggleTheme);
+    
+    </script>
+
+</body>
+</html>
