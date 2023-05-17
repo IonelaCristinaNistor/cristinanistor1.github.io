@@ -17,7 +17,7 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-SGE7F78CL6');
+  gtag('config', 'G-KYCRD9TVCY');
 </script>
 
     <body>
@@ -115,47 +115,47 @@
 </script>
 
 <script>
-    const themeBtn = document.getElementById("theme-btn");
-    
-    // Function to set the theme preference
-    function setThemePreference(isLightMode) {
-      if (isLightMode) {
-        document.body.classList.add("changeTheme");
-        themeBtn.classList.add("fa-sun");
-      } else {
-        document.body.classList.remove("changeTheme");
-        themeBtn.classList.remove("fa-sun");
-      }
+  const themeBtn = document.getElementById("theme-btn");
+  
+  // Function to set the theme preference
+  function setThemePreference(isLightMode) {
+    if (isLightMode) {
+      document.body.classList.add("changeTheme");
+      themeBtn.classList.add("fa-sun");
+    } else {
+      document.body.classList.remove("changeTheme");
+      themeBtn.classList.remove("fa-sun");
     }
-    
-    // Function to toggle the theme
-    function toggleTheme() {
-      const isLightMode = !document.body.classList.contains("changeTheme");
-      setThemePreference(isLightMode);
-      setThemePreferenceCookie(isLightMode);
-    }
-    
-    // Function to check the theme preference from cookie
-    function getThemePreference() {
-      const themeCookie = document.cookie.match('(^|;) ?themePreference=([^;]*)(;|$)');
-      return themeCookie ? themeCookie[2] === 'lightMode' : false;
-    }
-    
-    // Function to set the theme preference cookie
-    function setThemePreferenceCookie(isLightMode) {
-      const expirationDate = new Date();
-      expirationDate.setFullYear(expirationDate.getFullYear() + 1);
-      document.cookie = `themePreference=${isLightMode ? 'lightMode' : 'darkMode'}; expires=${expirationDate.toUTCString()}`;
-    }
-    
-    // Check the theme preference and set it accordingly
-    const themePreference = getThemePreference();
-    setThemePreference(themePreference);
-    
-    // Add event listener to the theme toggle button
-    themeBtn.addEventListener("click", toggleTheme);
-    
-    </script>
+  }
+  
+  // Function to toggle the theme
+  function toggleTheme() {
+    const isLightMode = !document.body.classList.contains("changeTheme");
+    setThemePreference(isLightMode);
+    setThemePreferenceCookie(isLightMode);
+  }
+  
+  // Function to check the theme preference from cookie
+  function getThemePreference() {
+    const themeCookie = document.cookie.match('(^|;) ?themePreference=([^;]*)(;|$)');
+    return themeCookie ? themeCookie[2] === 'lightMode' : false;
+  }
+  
+  // Function to set the theme preference cookie
+  function setThemePreferenceCookie(isLightMode) {
+    const expirationDate = new Date();
+    expirationDate.setFullYear(expirationDate.getFullYear() + 1);
+    document.cookie = `themePreference=${isLightMode ? 'lightMode' : 'darkMode'}; expires=${expirationDate.toUTCString()}`;
+  }
+  
+  // Check the theme preference and set it accordingly
+  const themePreference = getThemePreference();
+  setThemePreference(themePreference);
+  
+  // Add event listener to the theme toggle button
+  themeBtn.addEventListener("click", toggleTheme);
+  
+  </script>
 
 </body>
 </html>
